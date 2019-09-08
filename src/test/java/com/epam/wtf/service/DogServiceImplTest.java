@@ -26,7 +26,7 @@ public class DogServiceImplTest {
         dogList.add(new Dog("Pyos", "bulldog", (short) 4,true));
         dogList.add(new Dog("Snoop", "Dogg", (short) 42,false));
         dogList.add(new Dog("Sharik", "afador", (short) 10,true));
-        dogList.add(new Dog("Psina", "american escimo dog", (short) 11,false));
+        dogList.add(new Dog("Pseena", "american escimo dog", (short) 11,false));
     }
 
     @Test
