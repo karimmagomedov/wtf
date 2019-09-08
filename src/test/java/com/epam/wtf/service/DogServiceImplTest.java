@@ -1,5 +1,6 @@
 package com.epam.wtf.service;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.epam.wtf.model.Dog;
@@ -8,10 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class DogServiceImplTest {
+
+    List<Dog> dogList;
 
     @Mock
     DogServiceImpl dogServiceImpl;
@@ -21,7 +27,7 @@ public class DogServiceImplTest {
 
     @Before
     public void init(){
-        List<Dog> dogList = new ArrayList<>();
+        dogList = new ArrayList<>();
         dogList.add(new Dog("Psina", "pitbull", (short) 2,true));
         dogList.add(new Dog("Pyos", "bulldog", (short) 4,true));
         dogList.add(new Dog("Snoop", "Dogg", (short) 42,false));
@@ -31,7 +37,8 @@ public class DogServiceImplTest {
 
     @Test
     public void getDogCounts() {
-        when(dogServiceImpl.getDogCounts()).thenReturn(5);
-
+        when(dogServiceImpl.getDogCounts(dogList.get(0).getName())).thenReturn(5);
+        int actualResult = dogServiceImpl.getDogCounts(dogList.get(0).getName());
+        assertEquals(5,actualResult);
     }
 }
